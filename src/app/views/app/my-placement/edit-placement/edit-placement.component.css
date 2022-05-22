@@ -1,0 +1,28 @@
+.input-class{
+    max-width: 45%;
+}
+
+.input-icon{
+    padding-right: 10px;
+    line-height: 55px;
+    transform: scale(2.0);
+}
+
+.input-container{
+    display: flex;
+}
+
+.icon-button{
+    max-width: 100px;
+    color: white;
+    margin-left: 10px;
+}
+
+.picture{
+    height: 300px;
+    width: 250px;
+    z-index: 999;
+    right: 80px;
+    top: 2.5%;
+    position: absolute;
+}

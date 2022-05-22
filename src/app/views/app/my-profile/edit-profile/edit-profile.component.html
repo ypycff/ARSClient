@@ -1,0 +1,260 @@
+<div class="row">
+    <div class="col-12" style="margin-top: -10px;display: -webkit-box;">
+      <app-heading></app-heading>
+      <app-breadcrumb></app-breadcrumb> 
+    <div style="width:65%"></div>
+    <button class="btn btn-primary" type="submit" (click) = "save()">{{ 'forms.save' | translate }}</button>
+    <button class="btn btn-primary" type="submit" (click) = "submit()">{{ 'forms.submit' | translate }}</button>
+    </div>
+  </div>
+  <div class="separator mb-5"></div>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4 picture">
+      <div class="card ">
+        <div class="card-body">
+          <div class="text-center">
+            <img alt="Profile" src="/assets/img/profile-pic-l.jpg"
+              class="img-thumbnail border-0 rounded-circle mb-4 list-thumbnail">
+            <p class="list-item-heading mb-1">Sarah Kortney</p>
+            <p class="mb-4 text-muted text-small">Executive Director</p>
+            <button type="button" class="btn btn-sm btn-outline-primary ">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div class="card mb-4" style="width: 800px;margin: auto;">
+    <div class="card-body" style="padding-left: 60px;">
+      <h5 class="mb-4">Person Information</h5>
+  
+      <form>
+        <div class="input-container">
+          <i class="simple-icon-user input-icon"></i>
+  
+          <div class="form-group" style="width: 90%;">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.name"
+              name = "Name"
+              />
+              <span>Name</span>
+            </label>
+          </div>
+        </div>
+  
+  
+        <div class="form-row">
+          <i class="iconsminds-profile input-icon"></i>
+          <div class="form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.soeid"
+              name = "SOEID"
+              />
+              <span>SOEID</span>
+            </label>
+          </div>
+  
+          <div class="form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.geid"
+              name = "GEID" bsDatepicker>
+              <span>GEID</span>
+            </label>
+          </div>
+        </div>
+  
+       
+  
+        <div class="form-row">
+          <i class="simple-icon-location-pin input-icon"></i>
+  
+          <div class="form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.location"
+              name = "Location"/>
+              <span>Location</span>
+            </label>
+          </div>
+  
+          <div class= "form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control"  [(ngModel)]="profile.analystRole"
+              name = "Location"/>
+              <span>ICG TechAnalyst</span>
+            </label>
+          </div>
+        </div>
+         
+        <div class="input-container">
+          <i class="iconsminds-diploma-2 input-icon"></i>
+  
+          <div class="form-group" style="width: 90%;">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.degree"
+              name = "Diplomas"/>
+              <span>Academic Diplomas</span>
+            </label>
+          </div>
+        </div>
+  
+        <div class="input-container">
+          <i class="iconsminds-city-hall input-icon"></i>
+  
+          <div class="form-group" style="width: 90%;">
+            <label class="form-group has-float-label">
+              <input class="form-control" 
+              [(ngModel)]="profile.school"
+              name = "School"/>
+              <span>School</span>
+            </label>
+          </div>
+        </div>
+  
+        <div class="input-container">
+          <i class="iconsminds-student-hat input-icon"></i>
+  
+          <div class="form-group" style="width: 90%;">
+            <label class="form-group has-float-label">
+              <input class="form-control"  [(ngModel)]="profile.major"
+              name = "Major"/>
+              <span>Major</span>
+            </label>
+          </div>
+        </div>
+      </form>
+  
+      <h5 class="mb-4">Citi Experience</h5>
+  
+      <form>
+        <div class="input-container">
+          <i class="iconsminds-project input-icon"></i>
+  
+          <div class="form-group" style="width: 90%;">
+            <label class="form-group has-float-label">
+              <input class="form-control" [(ngModel)]="profile.organization"   name = "Organization"/>
+              <span>Tech Organization</span>
+            </label>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <i class="iconsminds-user input-icon"></i>
+          <div class="form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control"  [(ngModel)]="profile.managerName"   name = "managerName"/>
+              <span>Direct Manager Name</span>
+            </label>
+          </div>
+  
+          <div class="form-group col-md-6 input-class">
+            <label class="form-group has-float-label">
+              <input class="form-control" [(ngModel)]="profile.managerSoeid"   name = "managerSoeid"/>
+              <span>Direct Manager SOEID</span>
+            </label>
+          </div>
+        </div>
+      </form>
+  
+  
+      
+          <h5 class="mb-4">Citi Experience</h5>
+          <quill-editor [placeholder]="''" [(ngModel)]="profile.citiExperience"   name = "citiExperience"></quill-editor>
+        
+  
+      <h5 class="mb-4">Skills</h5>
+  
+      <form>
+        <label>Language Spoken</label>
+        <div class="form-row" *ngFor="let item of profile.language; let i = index">
+          <i class="simple-icon-badge input-icon" style="line-height: 45px;margin-left: 8px;"></i>
+          <div class="form-group col-md-6 input-class" style="max-width: 35%;">
+            <input type="text" class="form-control"  aria-describedby="emailHelp" [(ngModel)]="item.name"
+            placeholder="Input Name" name = "language.name">
+          </div>
+  
+          <div class="form-group col-md-6 input-class"  style="max-width: 35%;">
+            <ng-select [items]="levels"
+                bindLabel="name"
+                placeholder="Select level"
+                [(ngModel)]="item.level"
+                name = "language.level">
+            </ng-select>
+          </div>
+  
+          <div class="form-group col-md-6" style="max-width: 130px;">
+            <span class="badge badge-pill badge-success mb-1" style="margin-top: 8px;" (click)="addItem(profile.language)">
+             ADD
+            </span>
+            <span class="badge badge-pill badge-danger mb-1" style="margin-left:10px;" (click)="deleteItem(profile.language, i)">
+             DELETE
+            </span>
+          </div>
+        </div>
+  
+        <label>Tech skills</label>
+        <div class="form-row" *ngFor="let item of profile.techSkills; let i = index">
+          <i class="iconsminds-green-energy input-icon" style="line-height: 45px;"></i>
+          <div class="form-group col-md-6 input-class" style="max-width: 35%;">
+            <input type="text" class="form-control"  aria-describedby="emailHelp" [(ngModel)]="item.name"
+            placeholder="Input Name" name = "tech.name">
+          </div>
+  
+          <div class="form-group col-md-6 input-class"  style="max-width: 35%;">
+            <ng-select [items]="levels"
+                bindLabel="name"
+                placeholder="Select level"
+                [(ngModel)]="item.level"
+                name = "tech.level">
+            </ng-select>
+          </div>
+  
+          <div class="form-group col-md-6" style="max-width: 130px;">
+            <span class="badge badge-pill badge-success mb-1" style="margin-top: 8px;"  (click)="addItem(profile.techSkills)">
+             ADD
+            </span>
+            <span class="badge badge-pill badge-danger mb-1" style="margin-left:10px;" (click)="deleteItem(profile.techSkills, i)">
+             DELETE
+            </span>
+          </div>
+        </div>
+  
+        <label>Soft skills</label>
+        <div class="form-row" *ngFor="let item of profile.softSkill; let i = index">
+          <i class="iconsminds-green-energy input-icon" style="line-height: 45px;"></i>
+          <div class="form-group col-md-6 input-class" style="max-width: 35%;">
+            <input type="text" class="form-control"  aria-describedby="emailHelp" [(ngModel)]="item.name"
+            placeholder="Input Name" name = "Soft.name">
+          </div>
+  
+          <div class="form-group col-md-6 input-class"  style="max-width: 35%;">
+            <ng-select [items]="levels"
+                bindLabel="name"
+                placeholder="Select level"
+                [(ngModel)]="item.level"
+                name = "Soft.level">
+            </ng-select>
+          </div>
+  
+          <div class="form-group col-md-6" style="max-width: 130px;">
+            <span class="badge badge-pill badge-success mb-1" style="margin-top: 8px;" (click)="addItem(profile.softSkill)">
+             ADD
+            </span>
+            <span class="badge badge-pill badge-danger mb-1" style="margin-left:10px;" (click)="deleteItem(profile.softSkill, i)">
+             DELETE
+            </span>
+          </div>
+        </div>
+       
+      </form>
+      
+  
+      
+          <h5 class="mb-4">Note</h5>
+          <quill-editor [theme]="'bubble'" [modules]="modulesBubble" [placeholder]="''"  [(ngModel)]="profile.note"
+          name = "Soft.level">></quill-editor>
+       
+  

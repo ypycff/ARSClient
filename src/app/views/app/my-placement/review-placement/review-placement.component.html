@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-12" style="margin-top: -10px;display: -webkit-box;">
+        <app-heading></app-heading>
+        <app-breadcrumb></app-breadcrumb>
+        <div style="width:55%"></div>
+        <button class="btn btn-primary" type="submit">{{ 'forms.save' | translate }}</button>
+        <button class="btn btn-primary" type="submit">{{ 'forms.submit' | translate }}</button>
+    </div>
+</div>
+<div class="separator mb-5"></div>
+<div class="card mb-4" style="width: 800px;margin: auto;">
+    <div class="card-body" style="padding-left: 60px;padding-right: 100px;">
+        <h5 style="text-align: center">Placement</h5>
+        <div class="separator mb-5"></div>
+        <ul>
+            <li>
+                <th>Name:</th>
+                <td>{{placement.name}}</td>
+            </li>
+            <li>
+                <th>SOEID:</th>
+                <td>{{placement.soeid}}</td>
+            </li>
+            <li>
+                <th>Tech Organization:</th>
+                <td>{{placement.organization}}</td>
+            </li>
+            <li>
+                <th>Location:</th>
+                <td>{{placement.location}}</td>
+            </li>
+            <li>
+                <th>Current Analyst:</th>
+                <td>{{placement.currentAnalystName}}</td>
+                <td>{{placement.currentAnalystSoeid}}</td>
+            </li>
+            <li>
+                <th>Key Stake Holders:
+            </li>
+            <ol>
+                <li class="line" *ngFor="let item of placement.keyStakeholders">
+                    <th>Name:</th>
+                    <td>{{item.name}}</td>
+                    <th>SOEID:</th>
+                    <td>{{item.soeid}}</td>
+                    <th>Role:</th>
+                    <td>{{item.role}}</td>
+                </li>
+            </ol>
+            <tr>
+        </ul>
+
+        <ul>
+            <tr>
+                <th>Analyst Responsibilities:</th>
+            </tr>
+            <td> {{placement.analystResponsibility}} </td>
+        </ul>
+
+        <ul>
+            <tr>
+                <th>Key Project Work:</th>
+            </tr>
+            <td> {{placement.keyProjectWork}} </td>
+        </ul>
+
+        <ul>
+            <tr>
+                <th>Proficients:</th>
+            </tr>
+            <td> {{placement.proficients}} </td>
+        </ul>
+
+        <ul>
+            <tr>
+                <th>System Knowledge:</th>
+            </tr>
+            <td> {{placement.systemKnowlegdes}} </td>
+        </ul>
+
+
+
+    </div>

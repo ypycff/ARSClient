@@ -1,0 +1,101 @@
+
+<div class="row"></div>
+<!-- <div class="col-12" style="margin-top: -10px;display: -webkit-box;">
+      <app-heading></app-heading>
+      <app-breadcrumb></app-breadcrumb>
+      <div style="width:55%"></div>
+  </div>
+</div> -->
+<!-- <div class="separator mb-5"></div> -->
+
+<div class="card mb-4" style="width: 800px;margin: auto;">
+  <div class="card-body" style="padding-left: 60px;padding-right: 100px;">
+    <div class="text-center" class="col-md-6 col-sm-6 col-lg-4 col-12 mb-4 picture">
+      <img alt="Profile" src={{placement.teamImg}}
+        class="img-thumbnail border-0 rounded-circle mb-4 list-thumbnail" >
+      <p class="list-item-heading mb-1">Sarah Kortney</p>
+      <p class="mb-4 text-muted text-small">Executive Director</p>
+    </div>
+
+      <h5 style="text-align: center">Placement</h5>
+      <div class="separator mb-5"></div>
+      <ul>
+          <li>
+              <th>Name:</th>
+              <td>{{placement.name}}</td>
+          </li>
+          <li>
+              <th>SOEID:</th>
+              <td>{{placement.soeid}}</td>
+          </li>
+          <li>
+              <th>Tech Organization:</th>
+              <td>{{placement.organization}}</td>
+          </li>
+          <li>
+              <th>Location:</th>
+              <td>{{placement.location}}</td>
+          </li>
+          <li>
+              <th>Current Analyst:</th>
+              <td>{{placement.currentAnalystName}}</td>
+              <td>{{placement.currentAnalystSoeid}}</td>
+          </li>
+          <li>
+              <th>Key Stake Holders:
+          </li>
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Role</th>
+                <th scope="col">Name</th>
+                <th scope="col">Soeid</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of placement.keyStakeholders; let i = index;">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.role}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.soeid}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <tr>
+      </ul>
+
+      <ul>
+          <tr>
+              <th>Analyst Responsibilities:</th>
+          </tr>
+          <td>{{placement.analystResponsibility}}</td>
+      </ul>
+
+      <ul>
+          <tr>
+              <th>Key Project Work:</th>
+          </tr>
+          <td>
+            {{placement.keyProjectWork}}
+          </td>
+      </ul>
+
+      <ul>
+          <tr>
+              <th>Proficients:</th>
+          </tr>
+          <td>
+            {{placement.proficients}} 
+          </td>
+      </ul>
+
+      <ul>
+          <tr>
+              <th>System Knowledge:</th>
+          </tr>
+          <td>
+             {{placement.systemKnowlegdes}}
+          </td>
+      </ul>
+  </div>

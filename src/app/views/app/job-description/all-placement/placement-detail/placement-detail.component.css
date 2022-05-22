@@ -1,0 +1,23 @@
+td{
+    padding-left: 15px;
+}
+th{
+    padding-left: 15px;
+}
+li{
+    height: 30px;
+    list-style-type:none;
+}
+
+.line{
+    list-style-type: decimal
+}
+.picture{
+    height: 300px;
+    width: 400px;
+    z-index: 1200;
+    right: -30px;
+    top: 13%;
+    position: absolute;
+}
+

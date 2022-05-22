@@ -1,0 +1,144 @@
+<div class="row">
+    <div class="col-12" style="margin-top: -10px;display: -webkit-box;">
+        <app-heading></app-heading>
+        <app-breadcrumb></app-breadcrumb>
+        <div style="width:55%"></div>
+        <button class="btn btn-primary" type="submit" (click) = "save()">{{ 'forms.save' | translate }}</button>
+        <button class="btn btn-primary" type="submit" (click) = "submit()">{{ 'forms.submit' | translate }}</button>
+    </div>
+</div>
+<div class="separator mb-5"></div>
+<div class="row">
+
+    <div class="card mb-4" style="width: 800px;margin: auto;">
+        <div class="card-body" style="padding-left: 60px;">
+            <h5 class="mb-4">Placement</h5>
+
+            <form>
+                <div class="form-row">
+                    <i class="simple-icon-user input-icon"></i>
+
+                    <div class="form-group col-md-6 input-class">
+                        <label class="form-group has-float-label">
+                            <input class="form-control" 
+                            [(ngModel)]="placement.name"  name="Name" />
+                            <span>Name</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-md-6 input-class">
+                        <label class="form-group has-float-label">
+                            <input class="form-control" 
+                            [(ngModel)]="placement.soeid"  name="SOEID" />
+                            <span>SOEID</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <i class="simple-icon-location-pin input-icon"></i>
+                    <div class="form-group col-md-6 input-class">
+                        <label class="form-group has-float-label">
+                            <input class="form-control" 
+                            [(ngModel)]="placement.location"  name="Location" />
+                            <span>Location</span>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-6 input-class">
+                        <ng-select [items]="organizationList" bindLabel="organization" placeholder="Select tech organization" [(ngModel)]="placement.organization">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <i class="iconsminds-profile input-icon"></i>
+                    <div class="form-group col-md-6 input-class" style="margin-left: -5px">
+                        <label class="form-group has-float-label">
+                            <input class="form-control"  [(ngModel)]="placement.currentAnalystSoeid"  name="Analyst SOEID" />
+                            <span>Current Analyst SOEID</span>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-6 input-class">
+                        <label class="form-group has-float-label">
+                            <input class="form-control"  [(ngModel)]="placement.currentAnalystName"  name="Analyst Name" />
+                            <span>Current Analyst Name</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <i class="iconsminds-profile input-icon"></i>
+                    <div class="form-group col-md-6 input-class" style="margin-left: -5px">
+                        <label class="form-group has-float-label">
+                            <input class="form-control"  [(ngModel)]="placement.teamName"  name="Team" />
+                            <span>Team Name</span>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-6 input-class">
+                        <label class="form-group has-float-label">
+                            <input class="form-control"  [(ngModel)]="placement.rotationPosition"  name="Position" />
+                            <span>Position</span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <h5>Key Stake Holders</h5>
+                <div *ngFor="let element of placement.keyStakeholders; let i = index">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6" style="max-width: 30%;">
+                            <label class="form-group has-float-label">
+                                <input class="form-control" [(ngModel)]="element.name"  name="Name"  />
+                                <span>Name</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group col-md-6" style="max-width: 30%;">
+                            <label class="form-group has-float-label">
+                                <input class="form-control" [(ngModel)]="element.soeid"  name="SOEID" />
+                                <span>SOEID</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group col-md-6" style="max-width: 30%;">
+                            <label class="form-group has-float-label">
+                                <input class="form-control" [(ngModel)]="element.role"  name="Role" />
+                                <span>Role</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group col-md-6" style="max-width: 60px;margin-top: -14px;">
+                            <span class="badge badge-pill badge-success mb-1" style="margin-top: 8px;margin-left: 5px;width: 60px"
+                                (click)="addItem(placement.keyStakeholders )">
+                                ADD
+                            </span>
+                            <span class="badge badge-pill badge-danger mb-1" style="margin-left:5px;"
+                                (click)="deleteItem(placement.keyStakeholders , i)">
+                                DELETE
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <h5 class="mb-4">Analyst Responsibility</h5>
+            <quill-editor [placeholder]="''" name="analystResponsibility"  [(ngModel)]="placement.analystResponsibility"></quill-editor>
+
+            <h5 class="mb-4" style="margin-top: 25px;"  name="keyProjectWork" [(ngModel)]="placement.keyProjectWork">Key Project Work</h5>
+            <quill-editor [placeholder]="''"></quill-editor>
+
+
+            <h5 class="mb-4" style="margin-top: 25px;">Proficients</h5>
+            <div style="height:100px">
+                <quill-editor  name="proficients" [theme]="'bubble'" [modules]="modulesBubble" [placeholder]="''"  [(ngModel)]="placement.proficients"></quill-editor>
+            </div>
+            
+            
+
+
+            <h5 class="mb-4" style="margin-top: 25px;">System knowledge</h5>
+            <div style="height:100px">
+                <quill-editor name="systemKnowlegdes" [theme]="'bubble'" [modules]="modulesBubble" [placeholder]="''" [(ngModel)]="placement.systemKnowlegdes"></quill-editor>
+            </div>
+           

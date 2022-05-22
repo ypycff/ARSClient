@@ -1,0 +1,96 @@
+<div class="row app-row">
+    <div class="col-12">
+     
+    <!--1. rout in head -->
+        <app-breadcrumb></app-breadcrumb>
+        <div class="display-options-container">
+            <!--2. oder function -->
+            <div id="displayOptions" [collapse]="displayOptionsCollapsed" class="collapse dont-collapse-sm">
+                <div class="d-block d-md-inline-block">
+                    <div class="float-md-left mr-1 mb-1" dropdown>
+                        <button id="button-basic" dropdownToggle type="button"
+                            class="btn btn-outline-dark btn-xs dropdown-toggle" aria-controls="dropdown-basic">
+                            Order By : {{itemOrder}} <span class="caret"></span>
+                        </button>
+                        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu"
+                            aria-labelledby="button-basic">
+                            <li role="menuitem" *ngFor="let item of itemOptionsOrders"><a
+                                    [ngClass]="item === itemOrder ? 'dropdown-item active' : 'dropdown-item'"
+                                    (click)="itemOrder = item">{{item}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 3. search function -->
+                <div class="d-inline-block">
+                    <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+                        <input class="form-control" placeholder="Search">
+                        <!-- (keyup)="updateFilter($event)" -->
+                    </div>
+                </div>
+                <!-- 4.page number -->
+                <div class="float-right" id="pageCountDatatable">
+                    <span class="text-muted text-small">1-10 of 40 </span>
+                    <span dropdown class="d-inline-block position-relative">
+                        <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                            {{itemsPerPage}}
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm text-right" *dropdownMenu>
+                            <li role="menuitem" *ngFor="let item of itemOptionsPerPage"><a
+                                    [ngClass]="item === itemsPerPage ? 'dropdown-item active' : 'dropdown-item'"
+                                    (click)="itemsPerPage = item">{{item}}</a></li>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="separator mb-4"></div>
+        </div>
+    </div>
+    <!-- 5. show list function -->
+    <ng-container >
+            <div class="card mb-4">
+                <!-- refresh button -->
+                <div class="position-absolute card-top-buttons">
+                    <button class="btn btn-header-light icon-button">
+                        <i class="simple-icon-refresh"></i>
+                    </button>
+                </div>
+                <!-- card -->
+                <div class="card-body">
+                    <div class="scroll dashboard-list-with-thumbs">
+                        <perfect-scrollbar class="scroll" [config]="{suppressScrollX: true, wheelPropagation: false}">
+                            <div class="d-flex flex-row mb-3 pb-3 border-bottom" *ngFor="let profile of data">
+                                <a [routerLink]="['/app/analyst-profiles/profile-detail']" [queryParams] ="{id:profile.soeid}"
+                                 class="d-block position-relative">
+                                    <img [src]="profile.analystImg" [alt]="profile.soeid" class="list-thumbnail border-0" />
+                                </a>
+                                <div class="pl-3 pt-2 pr-2 pb-2">
+                                    <a [routerLink]="['/app/analyst-profiles/profile-detail']" [queryParams] ="{id:profile.soeid}"
+                                    class="d-block position-relative">
+                                        <p class="list-item-heading">{{profile.name}} ( {{profile.soeid}} )</p>
+                                        <div class="pr-4">
+                                            <p class="text-muted mb-1 text-small">
+                                                Current Tech Organization : {{profile.organization}}
+                                            </p>
+                                            <p class="text-muted mb-1 text-small">
+                                                Role : {{profile.analystRole}} 
+                                            </p>
+                                            <p class="text-muted mb-1 text-small">
+                                                Education : {{profile.school}} . {{profile.major}} . {{profile.degree}} 
+                                            </p>
+                                            <p class="text-muted mb-1 text-small" *ngFor="let skills of skill;let i = index" >
+                                                Skill {{i+1}}: {{skills.name}} . {{skills.level}} . {{skills.description}} 
+                                            </p>
+                                        </div>
+                                        <div class="text-primary text-small font-weight-medium d-none d-sm-block">
+                                             CitiExperience : {{profile.citiExperience}}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </perfect-scrollbar>
+                    </div>
+                </div>
+            </div>
+    </ng-container>
+</div>
